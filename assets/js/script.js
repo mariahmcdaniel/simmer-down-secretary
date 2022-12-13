@@ -1,3 +1,5 @@
+var movieContainer = document.querySelector(".movieContainer");
+
 var documentaries = ["The Rescue", "March of the Penguins", "Our Father", "Free Solo", "Fire of Love", "The Band", "Won't You Be My Neighbor", "Woodstock ...the movie", "Icarus", "Puping Iron", "The Cove", "Pele", "Apollo 11", "The Central Park Five", "Leaving Neverland", "Fyre", "Quincy", "The Thin Blue Line", "Zeitgeist The Movie", "Man On Wire", "The Salt of the Earth"];
 var horrorMovies = ["Smile", "Us", "Hereditary", "A Quiet Place", "It", "Get Out", "Scream", "Monster House", "Cabin in the Woods", "Let the Right One In", "Hellraiser", "The Invitation", "The Blair Witch Project", "Backcountry", "Krampus", "It Comes At Night", "The Mist", "Old", "The Ring", "The Thing"];
 var trueCrimeMovies = ["Zodiac", "The Hillside Strangler", "The Alphabet Killer", "Henry: Portrait of a Serial Killer", "The Secret Life: Jeffrey Dahmer", "To Catch a Killer", "The Deliberate Stranger", "The Hunt for the BTK Killer", "Monster", "The Riverman", "Dear Mr. Gacy","8213: Gacy House", "10 Rillington Place", "The Capture of the Green River Killer", "The Atlanta Child Murders", "Citizen X", "The Boston Strangler", "Badlands", "In Cold Blood", "Helter Skelter", "Polytechnique"];
@@ -23,16 +25,46 @@ fetch(movieUrl)
   })
   .then(function (data) {
     console.log(data);
-    var movieName = data.Title;
-    var movieImage = data.Poster;
-    var moviePlot = data.Plot;
-    var movieActors = data.Actors;
 
-    console.log(movieName);
-    console.log(movieImage);
-    console.log(moviePlot);
-    console.log(movieActors);
+    console.log(data.Title);
+    console.log(data.Poster);
+    console.log(data.Plot);
+    console.log("Rotten Tomatoes: " + data.Ratings[1].Value);
+
+    fillMovieCard(data);
   })
   .catch(function (error) {
     console.log(error);
   });
+
+var fillMovieCard = function (data) {
+  // MOVIE CARD ELEMENT
+  var movieCardEl = document.createElement("div");
+  movieCardEl.className = "card";
+  // MOVIE CARD IMG
+  var movieCardImg = document.createElement("img");
+  movieCardImg.className = "card-img-top";
+  movieCardImg.src = data.Poster
+  // MOVIE CARD BODY
+  var movieCardBody = document.createElement("div");
+  movieCardBody.className = "card-body";
+  // MOVIE CARD TITLE
+  var movieCardTitle = document.createElement("h5");
+  movieCardTitle.className = "card-title";
+  movieCardTitle.textContent = data.Title;
+  // MOVIE CARD DESCRIPTION
+  var movieCardPLot = document.createElement("p");
+  movieCardPLot.className = "card-text";
+  movieCardPLot.textContent = data.Plot;
+  // MOVIE CARD RATING
+  var movieCardRating = document.createElement("p");
+  movieCardRating.className = "card-text";
+  movieCardRating.textContent = ("Rotten Tomatoes: " + data.Ratings[1].Value);
+
+  // APPEND ELEMENT TO PAGE
+  movieContainer.appendChild(movieCardEl);
+  movieCardEl.appendChild(movieCardImg);
+  movieCardEl.appendChild(movieCardBody);
+  movieCardBody.append(movieCardTitle, movieCardPLot, movieCardRating);
+  
+};
