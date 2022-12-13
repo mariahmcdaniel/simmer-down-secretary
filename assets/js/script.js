@@ -1,6 +1,6 @@
 var explosion = ["Vesper", "Espresso Martini", "Alabama Slammer", "White Russian", "Penicillin", "Kamikaze"];
 var smart = ["Dark & Stormy", "Negroni", "Old Fashioned", "French 75", "Mint Julep"];
-var scared = ["Bloody Mary", "Boiler Maker", "Corpse Reviver No. 2", "Cuba Libra", "Grasshopper"];
+var scared = ["Bloody Mary", "BoilerMaker", "Corpse Reviver", "Cuba Libra", "Grasshopper"];
 var investigative = ["Sidecar", "Blue Motorcycle", "Bellini", "Black & Tan", "Gin Fizz"];
 var laugh = ["Mojito", "Pimm's Cup", "Tom Collins", "Daiquiri", "Bahama Mama"];
 var dramatic = ["Dirty Martini", "Alabama Slammer", "Caipirinha", "Fuzzy Navel", "Greyhound"];
@@ -9,12 +9,27 @@ var yeehaw = ["Whiskey Sour", "Polama", "Cement Mixer", "Long Island Iced Tea", 
 var thriller = ["Moscow Mule", "Sazerac", "Boulevardier", "Gimlet", "Mind Eraser"];
 var family = ["Mojito", "Margarita", "Aperol Spritz", "Mimosa", "Hot Toddy"];
 
-var drinks = [explosion, smart, scared, investigative, laugh, dramatic, youngLove, yeehaw, thriller, family]
+// var search = scared[4]  ---this is a tester for broken searches
+// scared is all good
+
+var drinks = [explosion, smart, scared, investigative, laugh, dramatic, youngLove, yeehaw, thriller, family];
+
+var i = 3
+
+var search = drinks[i][Math.floor(Math.random() * drinks[i].length)];
 
 
-var search = laugh[Math.floor(Math.random() * laugh.length)]
+requestURL = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=" + search;
 
-requestURL = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=" + search
+var fillCards = function(name, picture, mainIngred, instructions) {
+
+    
+            console.log(name);
+            console.log(picture);
+            console.log(mainIngred);
+            console.log(instructions);
+
+}
 
 fetch(requestURL)
         .then(function (response) {
@@ -22,13 +37,13 @@ fetch(requestURL)
         })
         .then(function(data) {
             console.log("results", data.drinks);
-            // displayResults();
+            console.log(data.drinks[0].strDrink);
+            console.log(data.drinks[0].strIngredient1);
+            console.log(data.drinks[0].strDrinkThumb);
+            console.log(data.drinks[0].strInstructions);
+
+            fillCards(data.drinks[0].strDrink, data.drinks[0].strIngredient1, data.drinks[0].strDrinkThumb, data.drinks[0].strInstructions);
         })
         .catch(function(error) {
             console.log(error);
         });
-
-        // strDrink
-        // strDrinkThumb
-        //strIngredient1
-        //
