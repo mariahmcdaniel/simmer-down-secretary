@@ -18,7 +18,7 @@ var j = 0
 
 
 var drinkFetch = function () {
-    for (var i = 0; i < 4; i++) {
+    for (var i = 0; i < 3; i++) {
         
         var drinks = [explosion, smart, scared, investigative, laugh, dramatic, youngLove, yeehaw, thriller, family];
         
@@ -62,9 +62,38 @@ var drinkFetch = function () {
             
             var cardPicture = document.createElement('img');
             cardPicture.setAttribute('src', picture);
+            cardPicture.setAttribute('style', 'max-width: 100%');
+
             
             var cardDiv4 = document.createElement('div');
-            cardDiv3.className = 'col-md-4';          
+            cardDiv4.className = 'col-md-8';    
+            
+            var cardBody = document.createElement('div');
+            cardBody.className = 'card-body';
+            
+            var cardName = document.createElement('h5');
+            cardName.className = 'card-title';
+            cardName.textContent = name;
+            
+            var cardinstructions = document.createElement('p');
+            cardinstructions.className = 'card-text';
+            cardinstructions.textContent = instructions;
+
+            var cardingred = document.createElement('p');
+            cardingred.className = 'card-text';
+            cardingred.textContent = mainIngred;
+
+            cardInfo.appendChild(cardDiv1);
+            cardDiv1.appendChild(cardDiv2);
+            cardDiv2.appendChild(cardDiv3);
+            cardDiv2.appendChild(cardDiv4);
+            cardDiv3.appendChild(cardPicture);
+            cardDiv4.appendChild(cardBody);
+            cardBody.append(cardName, cardinstructions, cardingred);
+
+
+
+
 
 
 
