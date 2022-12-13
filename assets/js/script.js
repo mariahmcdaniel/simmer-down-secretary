@@ -11,18 +11,10 @@ var family = ["Mojito", "Margarita", "Aperol Spritz", "Mimosa", "Hot Toddy"];
 
 var drinks = [explosion, smart, scared, investigative, laugh, dramatic, youngLove, yeehaw, thriller, family]
 
-search = drinks[i].random()
 
-search = explosion[2]
+var search = laugh[Math.floor(Math.random() * laugh.length)]
 
 requestURL = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=" + search
-
-// var displayResults = function () {
-//     var cardImage = document.getElementById("card-image");
-//     cardImage.src = drinks.strDrinkThumb
-
-
-// }
 
 fetch(requestURL)
         .then(function (response) {
