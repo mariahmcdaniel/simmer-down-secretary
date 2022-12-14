@@ -6,9 +6,9 @@ var documentaries = ["The Rescue", "March of the Penguins", "Our Father", "Free 
 
 var horrorMovies = ["Smile", "Us", "Hereditary", "A Quiet Place", "It", "Get Out", "Scream", "Monster House", "Cabin in the Woods", "Let the Right One In", "Hellraiser", "The Invitation", "The Blair Witch Project", "Backcountry", "Krampus", "It Comes At Night", "The Mist", "Old", "The Ring", "The Thing"];
 
-var trueCrimeMovies = ["Zodiac", "The Hillside Strangler", "The Alphabet Killer", "Henry: Portrait of a Serial Killer", "The Secret Life: Jeffrey Dahmer", "To Catch a Killer", "The Deliberate Stranger", "The Hunt for the BTK Killer", "Monster", "The Riverman", "Dear Mr. Gacy","8213: Gacy House", "10 Rillington Place", "The Capture of the Green River Killer", "The Atlanta Child Murders", "Citizen X", "The Boston Strangler", "Badlands", "In Cold Blood", "Helter Skelter", "Polytechnique"];
+var trueCrimeMovies = ["Zodiac", "The Hillside Strangler", "The Alphabet Killer", "Henry: Portrait of a Serial Killer", "The Secret Life: Jeffrey Dahmer", "To Catch a Killer", "The Deliberate Stranger", "The Hunt for the BTK Killer", "Monster", "The Riverman", "Dear Mr. Gacy", "8213: Gacy House", "10 Rillington Place", "The Capture of the Green River Killer", "The Atlanta Child Murders", "Citizen X", "The Boston Strangler", "Badlands", "In Cold Blood", "Helter Skelter", "Polytechnique"];
 
-var comedies = ["The General", "Duck Soup", "It Happened One Night", "Wedding Crashers", "Anchorman:The Legend of Ron Burgundy", "Walk Hard: The Dewey Cox Story", "The Hangover", "Office Space", "Dumb and Dumber", "Austin Powers: International Man of Mystery", "Old School","Bedazzled", "Analyze This", "Midnight Run", "The Jerk", "Liar Liar", "Forgetting Sarah Marshall", "The 40-Year-Old Virgin", "Swingers","Borat", "The Heat", "Superbad", "We're the Millers", "Bridesmaids"];
+var comedies = ["The General", "Duck Soup", "It Happened One Night", "Wedding Crashers", "Anchorman:The Legend of Ron Burgundy", "Walk Hard: The Dewey Cox Story", "The Hangover", "Office Space", "Dumb and Dumber", "Austin Powers: International Man of Mystery", "Old School", "Bedazzled", "Analyze This", "Midnight Run", "The Jerk", "Liar Liar", "Forgetting Sarah Marshall", "The 40-Year-Old Virgin", "Swingers", "Borat", "The Heat", "Superbad", "We're the Millers", "Bridesmaids"];
 
 var dramas = ["12 Years a Slave", "A Star Is Born", "A Streetcar Named Desire", "Almost Famous", "Animal Kingdom", "Atonement", "Beautiful Boy", "Before Sunrise", "Billy Elliot", "Boys Don\’t Cry", "Children of Men", "Daughters of the Dust", "Dunkirk", "Eternal Sunshine of the Spotless Mind", "Fences", "Gladiator", "Gone Girl", "Good Will Hunting", "Her", "Hidden Figures"];
 
@@ -40,62 +40,62 @@ var j = 0
 
 
 var drinkFetch = function () {
-    for (var i = 0; i < 3; i++) {
-        
-        var drinks = [explosion, smart, scared, investigative, laugh, dramatic, youngLove, yeehaw, thriller, family];
-        
-        
-        var search = drinks[j][Math.floor(Math.random() * drinks[j].length)];
-        
-        requestURL = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=" + search;
-        
-        var fillCards = function(name, picture, mainIngred, instructions) {
-    
-            console.log(name);
-            console.log(picture);
-            console.log(mainIngred);
-            console.log(instructions);
+  for (var i = 0; i < 3; i++) {
 
-            var cardDiv1 = document.createElement('div');
-            cardDiv1.className = "card mb-3";
-            cardDiv1.setAttribute('style', 'max-width: 540px');
+    var drinks = [explosion, smart, scared, investigative, laugh, dramatic, youngLove, yeehaw, thriller, family];
 
-            var cardDiv2 = document.createElement('div');
-            cardDiv2.className = 'row g-0';
 
-            var cardDiv3 = document.createElement('div');
-            cardDiv3.className = 'col-md-4';          
-            
-            var cardPicture = document.createElement('img');
-            cardPicture.setAttribute('src', picture);
-            cardPicture.setAttribute('style', 'max-width: 100%');
+    var search = drinks[j][Math.floor(Math.random() * drinks[j].length)];
 
-            
-            var cardDiv4 = document.createElement('div');
-            cardDiv4.className = 'col-md-8';    
-            
-            var cardBody = document.createElement('div');
-            cardBody.className = 'card-body';
-            
-            var cardName = document.createElement('h5');
-            cardName.className = 'card-title';
-            cardName.textContent = name;
-            
-            var cardinstructions = document.createElement('p');
-            cardinstructions.className = 'card-text';
-            cardinstructions.textContent = instructions;
+    requestURL = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=" + search;
 
-            var cardingred = document.createElement('p');
-            cardingred.className = 'card-text';
-            cardingred.textContent = mainIngred;
+    var fillCards = function (name, picture, mainIngred, instructions) {
 
-            cardInfo.appendChild(cardDiv1);
-            cardDiv1.appendChild(cardDiv2);
-            cardDiv2.appendChild(cardDiv3);
-            cardDiv2.appendChild(cardDiv4);
-            cardDiv3.appendChild(cardPicture);
-            cardDiv4.appendChild(cardBody);
-            cardBody.append(cardName, cardinstructions, cardingred);
+      console.log(name);
+      console.log(picture);
+      console.log(mainIngred);
+      console.log(instructions);
+
+      var cardDiv1 = document.createElement('div');
+      cardDiv1.className = "card mb-3";
+      cardDiv1.setAttribute('style', 'max-width: 540px');
+
+      var cardDiv2 = document.createElement('div');
+      cardDiv2.className = 'row g-0';
+
+      var cardDiv3 = document.createElement('div');
+      cardDiv3.className = 'col-md-4';
+
+      var cardPicture = document.createElement('img');
+      cardPicture.setAttribute('src', picture);
+      cardPicture.setAttribute('style', 'max-width: 100%');
+
+
+      var cardDiv4 = document.createElement('div');
+      cardDiv4.className = 'col-md-8';
+
+      var cardBody = document.createElement('div');
+      cardBody.className = 'card-body';
+
+      var cardName = document.createElement('h5');
+      cardName.className = 'card-title';
+      cardName.textContent = name;
+
+      var cardinstructions = document.createElement('p');
+      cardinstructions.className = 'card-text';
+      cardinstructions.textContent = instructions;
+
+      var cardingred = document.createElement('p');
+      cardingred.className = 'card-text';
+      cardingred.textContent = mainIngred;
+
+      cardInfo.appendChild(cardDiv1);
+      cardDiv1.appendChild(cardDiv2);
+      cardDiv2.appendChild(cardDiv3);
+      cardDiv2.appendChild(cardDiv4);
+      cardDiv3.appendChild(cardPicture);
+      cardDiv4.appendChild(cardBody);
+      cardBody.append(cardName, cardinstructions, cardingred);
 
 
 
@@ -105,19 +105,20 @@ var drinkFetch = function () {
 
     }
 
-fetch(requestURL)
-        .then(function (response) {
-            return response.json();
-        })
-        .then(function(data) {
+    fetch(requestURL)
+      .then(function (response) {
+        return response.json();
+      })
+      .then(function (data) {
 
-            fillCards(data.drinks[0].strDrink, data.drinks[0].strDrinkThumb, data.drinks[0].strIngredient1, data.drinks[0].strInstructions);
-        })
-        .catch(function(error) {
-            console.log(error);
-        });
+        fillCards(data.drinks[0].strDrink, data.drinks[0].strDrinkThumb, data.drinks[0].strIngredient1, data.drinks[0].strInstructions);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
 
-}}
+  }
+}
 drinkFetch();
 
 // api.giphy.com/v1/gifs/search?q=laugh&api_key=FsySzgOBYv5zqlKccJT94Jx4XGUmM90i&rating=pg&limit=20
@@ -136,27 +137,28 @@ var thrillerApiUrl = 'https://api.giphy.com/v1/gifs/search?q=anxious&api_key=Fsy
 var familyApiUrl = 'https://api.giphy.com/v1/gifs/search?q=family&api_key=FsySzgOBYv5zqlKccJT94Jx4XGUmM90i&rating=pg&limit=20';
 
 var requestUrls = [documentaryApiUrl, horrorApiUrl, crimeApiUrl, comedyApiUrl, dramaApiUrl, romanceApiUrl, actionApiUrl, westernApiUrl, thrillerApiUrl, familyApiUrl];
-// container.addEventListener('click', function(event){
-// var element = event.target;
-// if (element.matches('.gifBtn')){
-
-// }
-// });
+container.addEventListener('click', function (event) {
+  var element = event.target;
+  if (element.matches('.gifBtn img')) {
+    var indexPos = element.dataset.index;
+    console.log(indexPos);
+  }
+});
 var gifImgEls = document.querySelectorAll('.gifBtn img');
 var fetchGif = function (requestUrl, btnNum) {
-    fetch(requestUrl)
-        .then(function (response) {
-            return response.json();
-        })
-        .then(function (data) {
-            console.log(data);
-            console.log(data.data[Math.floor(Math.random() * 10)].images.downsized.url);
-            gifImgEls[btnNum].setAttribute('src', data.data[Math.floor(Math.random() * 5)].images.fixed_width_downsampled
-                .url);
-        })
-        .catch(function (error) {
-            console.log(error);
-        });
+  fetch(requestUrl)
+    .then(function (response) {
+      return response.json();
+    })
+    .then(function (data) {
+      console.log(data);
+      console.log(data.data[Math.floor(Math.random() * 10)].images.downsized.url);
+      gifImgEls[btnNum].setAttribute('src', data.data[Math.floor(Math.random() * 5)].images.fixed_width_downsampled
+        .url);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
 }
 
 fetchGif(documentaryApiUrl, 0);
@@ -220,6 +222,6 @@ var fillMovieCard = function (data) {
   movieCardEl.appendChild(movieCardImg);
   movieCardEl.appendChild(movieCardBody);
   movieCardBody.append(movieCardTitle, movieCardPLot, movieCardRating);
-  
+
 };
 
