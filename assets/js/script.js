@@ -22,30 +22,30 @@ var thrillers = ["Gone Girl", "The Invisible Man", "Woman in the Window", "The B
 
 var westerns = ["The Power of the Dog", "Hell or High Water", "Tombstone", "The Hateful Eight", "The Salvation", "Blackthorn", "The Magnificent Seven", "Dead Man", "The Horse Whisperer", "The Keeping Room", "In a Valley of Violence", "Silverado", "The Ballad of Lefty Brown", "Red Hill", "Hostiles", "Appaloosa", "Open Range", "El Topo", "The Long Riders", "Hud", "The Homesman", "How the West Was Won"];
 
-var explosion = ["Vesper", "Espresso Martini", "Alabama Slammer", "White Russian", "Penicillin", "Kamikaze"];
 var smart = ["Dark & Stormy", "Negroni", "Old Fashioned", "French 75", "Mint Julep"];
 var scared = ["Bloody Mary", "BoilerMaker", "Corpse Reviver", "Cuba Libra", "Grasshopper"];
 var investigative = ["Sidecar", "Blue Lagoon", "Bellini", "Black & Tan", "Gin Fizz"];
 var laugh = ["Mojito", "Pimm's Cup", "Tom Collins", "Daiquiri", "Bahama Mama"];
 var dramatic = ["Dirty Martini", "Alabama Slammer", "Caipirinha", "Fuzzy Navel", "Greyhound"];
 var youngLove = ["Cosmo", "Midori Sour", "Sex on the Beach", "Mai Tai", "Pina Colada"];
-var yeehaw = ["Whiskey Sour", "Polama", "Cement Mixer", "Long Island Iced Tea", "Lynchburg Lemonade", "Mudslide"];
-var thriller = ["Moscow Mule", "Sazerac", "Boulevardier", "Gimlet", "Mind Eraser"];
+var explosion = ["Vesper", "Espresso Martini", "Alabama Slammer", "White Russian", "Penicillin", "Kamikaze"];
 var family = ["Mojito", "Margarita", "Aperol Spritz", "Mimosa", "Hot Toddy"];
+var thriller = ["Moscow Mule", "Sazerac", "Boulevardier", "Gimlet", "Mind Eraser"];
+var yeehaw = ["Whiskey Sour", "Polama", "Cement Mixer", "Long Island Iced Tea", "Lynchburg Lemonade", "Mudslide"];
 
-var j = 0
+var i = 4
 // var search = investigative[1]  
 // ---this is a tester for broken searches
 // scared, investigative all good
 
 
 var drinkFetch = function () {
-  for (var i = 0; i < 3; i++) {
+  for (var j = 0; j < 3; j++) {
 
-    var drinks = [explosion, smart, scared, investigative, laugh, dramatic, youngLove, yeehaw, thriller, family];
+    var drinks = [smart, scared, investigative, laugh, dramatic, youngLove, explosion, family, thriller, yeehaw,];
 
 
-    var search = drinks[j][Math.floor(Math.random() * drinks[j].length)];
+    var search = drinks[i][Math.floor(Math.random() * drinks[i].length)];
 
     requestURL = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=" + search;
 
@@ -56,69 +56,79 @@ var drinkFetch = function () {
       console.log(mainIngred);
       console.log(instructions);
 
-      var cardDiv1 = document.createElement('div');
-      cardDiv1.className = "card mb-3";
-      cardDiv1.setAttribute('style', 'max-width: 540px');
-
-      var cardDiv2 = document.createElement('div');
-      cardDiv2.className = 'row g-0';
-
-      var cardDiv3 = document.createElement('div');
-      cardDiv3.className = 'col-md-4';
-
-      var cardPicture = document.createElement('img');
-      cardPicture.setAttribute('src', picture);
-      cardPicture.setAttribute('style', 'max-width: 100%');
+      var drinks = [explosion, smart, scared, investigative, laugh, dramatic, youngLove, yeehaw, thriller, family];
 
 
-      var cardDiv4 = document.createElement('div');
-      cardDiv4.className = 'col-md-8';
+      var search = drinks[j][Math.floor(Math.random() * drinks[j].length)];
 
-      var cardBody = document.createElement('div');
-      cardBody.className = 'card-body';
+      requestURL = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=" + search;
 
-      var cardName = document.createElement('h5');
-      cardName.className = 'card-title';
-      cardName.textContent = name;
+      var fillCards = function (name, picture, mainIngred, instructions) {
 
-      var cardinstructions = document.createElement('p');
-      cardinstructions.className = 'card-text';
-      cardinstructions.textContent = instructions;
+        console.log(name);
+        console.log(picture);
+        console.log(mainIngred);
+        console.log(instructions);
 
-      var cardingred = document.createElement('p');
-      cardingred.className = 'card-text';
-      cardingred.textContent = mainIngred;
+        var cardDiv1 = document.createElement('div');
+        cardDiv1.className = "card mb-3";
+        cardDiv1.setAttribute('style', 'max-width: 540px');
 
-      cardInfo.appendChild(cardDiv1);
-      cardDiv1.appendChild(cardDiv2);
-      cardDiv2.appendChild(cardDiv3);
-      cardDiv2.appendChild(cardDiv4);
-      cardDiv3.appendChild(cardPicture);
-      cardDiv4.appendChild(cardBody);
-      cardBody.append(cardName, cardinstructions, cardingred);
+        var cardDiv2 = document.createElement('div');
+        cardDiv2.className = 'row g-0';
 
+        var cardDiv3 = document.createElement('div');
+        cardDiv3.className = 'col-md-4';
+
+        var cardPicture = document.createElement('img');
+        cardPicture.setAttribute('src', picture);
+        cardPicture.setAttribute('style', 'max-width: 100%');
 
 
+        var cardDiv4 = document.createElement('div');
+        cardDiv4.className = 'col-md-8';
+
+        var cardBody = document.createElement('div');
+        cardBody.className = 'card-body';
+
+        var cardName = document.createElement('h5');
+        cardName.className = 'card-title';
+        cardName.textContent = name;
+
+        var cardinstructions = document.createElement('p');
+        cardinstructions.className = 'card-text';
+        cardinstructions.textContent = instructions;
+
+        var cardingred = document.createElement('p');
+        cardingred.className = 'card-text';
+        cardingred.textContent = mainIngred;
+
+        cardInfo.appendChild(cardDiv1);
+        cardDiv1.appendChild(cardDiv2);
+        cardDiv2.appendChild(cardDiv3);
+        cardDiv2.appendChild(cardDiv4);
+        cardDiv3.appendChild(cardPicture);
+        cardDiv4.appendChild(cardBody);
+        cardBody.append(cardName, cardinstructions, cardingred);
 
 
+      }
 
+      fetch(requestURL)
+        .then(function (response) {
+          return response.json();
+        })
+        .then(function (data) {
+
+          fillCards(data.drinks[0].strDrink, data.drinks[0].strDrinkThumb, data.drinks[0].strIngredient1, data.drinks[0].strInstructions);
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
 
     }
-
-    fetch(requestURL)
-      .then(function (response) {
-        return response.json();
-      })
-      .then(function (data) {
-
-        fillCards(data.drinks[0].strDrink, data.drinks[0].strDrinkThumb, data.drinks[0].strIngredient1, data.drinks[0].strInstructions);
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-
   }
-}
+};
 drinkFetch();
 
 // api.giphy.com/v1/gifs/search?q=laugh&api_key=FsySzgOBYv5zqlKccJT94Jx4XGUmM90i&rating=pg&limit=20
@@ -159,7 +169,7 @@ var fetchGif = function (requestUrl, btnNum) {
     .catch(function (error) {
       console.log(error);
     });
-}
+};
 
 fetchGif(documentaryApiUrl, 0);
 fetchGif(horrorApiUrl, 1);
@@ -174,7 +184,6 @@ fetchGif(familyApiUrl, 9);
 
 var movies = [documentaries, horrorMovies, trueCrimeMovies, comedies, dramas, romanceMovies, actionMovies, feelGoodMovies, thrillers, westerns];
 
-i = 0;
 
 var searchMovies = movies[i][Math.floor(Math.random() * movies[i].length)];
 
