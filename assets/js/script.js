@@ -22,30 +22,30 @@ var thrillers = ["Gone Girl", "The Invisible Man", "Woman in the Window", "The B
 
 var westerns = ["The Power of the Dog", "Hell or High Water", "Tombstone", "The Hateful Eight", "The Salvation", "Blackthorn", "The Magnificent Seven", "Dead Man", "The Horse Whisperer", "The Keeping Room", "In a Valley of Violence", "Silverado", "The Ballad of Lefty Brown", "Red Hill", "Hostiles", "Appaloosa", "Open Range", "El Topo", "The Long Riders", "Hud", "The Homesman", "How the West Was Won"];
 
-var explosion = ["Vesper", "Espresso Martini", "Alabama Slammer", "White Russian", "Penicillin", "Kamikaze"];
 var smart = ["Dark & Stormy", "Negroni", "Old Fashioned", "French 75", "Mint Julep"];
 var scared = ["Bloody Mary", "BoilerMaker", "Corpse Reviver", "Cuba Libra", "Grasshopper"];
 var investigative = ["Sidecar", "Blue Lagoon", "Bellini", "Black & Tan", "Gin Fizz"];
 var laugh = ["Mojito", "Pimm's Cup", "Tom Collins", "Daiquiri", "Bahama Mama"];
 var dramatic = ["Dirty Martini", "Alabama Slammer", "Caipirinha", "Fuzzy Navel", "Greyhound"];
 var youngLove = ["Cosmo", "Midori Sour", "Sex on the Beach", "Mai Tai", "Pina Colada"];
-var yeehaw = ["Whiskey Sour", "Polama", "Cement Mixer", "Long Island Iced Tea", "Lynchburg Lemonade", "Mudslide"];
-var thriller = ["Moscow Mule", "Sazerac", "Boulevardier", "Gimlet", "Mind Eraser"];
+var explosion = ["Vesper", "Espresso Martini", "Alabama Slammer", "White Russian", "Penicillin", "Kamikaze"];
 var family = ["Mojito", "Margarita", "Aperol Spritz", "Mimosa", "Hot Toddy"];
+var thriller = ["Moscow Mule", "Sazerac", "Boulevardier", "Gimlet", "Mind Eraser"];
+var yeehaw = ["Whiskey Sour", "Polama", "Cement Mixer", "Long Island Iced Tea", "Lynchburg Lemonade", "Mudslide"];
 
-var j = 0
+var i = 4
 // var search = investigative[1]  
 // ---this is a tester for broken searches
 // scared, investigative all good
 
 
 var drinkFetch = function () {
-    for (var i = 0; i < 3; i++) {
+    for (var j = 0; j < 3; j++) {
         
-        var drinks = [explosion, smart, scared, investigative, laugh, dramatic, youngLove, yeehaw, thriller, family];
+        var drinks = [smart, scared, investigative, laugh, dramatic, youngLove, explosion, family, thriller, yeehaw,];
         
         
-        var search = drinks[j][Math.floor(Math.random() * drinks[j].length)];
+        var search = drinks[i][Math.floor(Math.random() * drinks[i].length)];
         
         requestURL = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=" + search;
         
@@ -96,11 +96,6 @@ var drinkFetch = function () {
             cardDiv3.appendChild(cardPicture);
             cardDiv4.appendChild(cardBody);
             cardBody.append(cardName, cardinstructions, cardingred);
-
-
-
-
-
 
 
     }
@@ -172,7 +167,6 @@ fetchGif(familyApiUrl, 9);
 
 var movies = [documentaries, horrorMovies, trueCrimeMovies, comedies, dramas, romanceMovies, actionMovies, feelGoodMovies, thrillers, westerns];
 
-i = 0;
 
 var searchMovies = movies[i][Math.floor(Math.random() * movies[i].length)];
 
