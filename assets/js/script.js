@@ -26,12 +26,15 @@ var family = ["Mojito", "Margarita", "Aperol Spritz", "Mimosa", "Hot Toddy"];
 var thriller = ["Moscow Mule", "Sazerac", "Boulevardier", "Gimlet", "Mind Eraser"];
 var yeehaw = ["Whiskey Sour", "Polama", "Cement Mixer", "Long Island Iced Tea", "Lynchburg Lemonade", "Mudslide"];
 
-var i = 5 //young love
-// var search = investigative[1]  
-// ---this is a tester for broken searches
-// scared, investigative all good
+var runResults = function () {
 
+  var i = localStorage.getItem('data-index');
+  console.log(i);
+  
+ 
 
+  
+  
 var drinkFetch = function () {
   for (var j = 0; j < 3; j++) {
     
@@ -40,7 +43,7 @@ var drinkFetch = function () {
     
     var search = drinks[i][Math.floor(Math.random() * drinks[i].length)];
     
-    requestURL = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=" + search;
+    var requestURL = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=" + search;
     
     
     var fillCards = function (name, picture, mainIngred, instructions, mainIngred2, mainIngred3) {
@@ -115,7 +118,7 @@ var movieFetch = function () {
   var searchMovies = movies[i][Math.floor(Math.random() * movies[i].length)];
 
   var movieUrl = "http://www.omdbapi.com/?apikey=88ff8839&t=" + searchMovies;
-
+  
   fetch(movieUrl)
     .then(function (response) {
       return response.json();
@@ -126,9 +129,9 @@ var movieFetch = function () {
     .catch(function (error) {
       console.log(error);
     });
-
-  var fillMovieCard = function (data) {
-    // MOVIE CARD ELEMENT
+    
+    var fillMovieCard = function (data) {
+      // MOVIE CARD ELEMENT
     var movieCardEl = document.createElement("div");
     movieCardEl.className = "card p-5";
     // MOVIE CARD IMG
@@ -161,6 +164,7 @@ var movieFetch = function () {
   }
 };
 movieFetch();
+};
 
 var documentaryApiUrl = 'https://api.giphy.com/v1/gifs/search?q=research&api_key=FsySzgOBYv5zqlKccJT94Jx4XGUmM90i&rating=pg&limit=20'
 var horrorApiUrl = 'https://api.giphy.com/v1/gifs/search?q=terrifying&api_key=FsySzgOBYv5zqlKccJT94Jx4XGUmM90i&rating=pg&limit=20';
@@ -173,12 +177,19 @@ var westernApiUrl = 'https://api.giphy.com/v1/gifs/search?q=western&api_key=FsyS
 var thrillerApiUrl = 'https://api.giphy.com/v1/gifs/search?q=anxious&api_key=FsySzgOBYv5zqlKccJT94Jx4XGUmM90i&rating=pg&limit=20';
 var familyApiUrl = 'https://api.giphy.com/v1/gifs/search?q=family&api_key=FsySzgOBYv5zqlKccJT94Jx4XGUmM90i&rating=pg&limit=20';
 
+
+
 var requestUrls = [documentaryApiUrl, horrorApiUrl, crimeApiUrl, comedyApiUrl, dramaApiUrl, romanceApiUrl, actionApiUrl, westernApiUrl, thrillerApiUrl, familyApiUrl];
 container.addEventListener('click', function (event) {
   var element = event.target;
   if (element.matches('.gifBtn img')) {
     var indexPos = element.dataset.index;
+    localStorage.setItem('data-index', indexPos);
+    window.location = './results.html';
   }
+  
+  
+  
 });
 var gifImgEls = document.querySelectorAll('.gifBtn img');
 var fetchGif = function (requestUrl, btnNum) {
@@ -206,6 +217,5 @@ fetchGif(westernApiUrl, 7);
 fetchGif(thrillerApiUrl, 8);
 fetchGif(familyApiUrl, 9);
 
-replayBtn.addEventListener("click", function() {
-  window.location.href="";
-});
+
+runResults();
