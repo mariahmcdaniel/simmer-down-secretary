@@ -49,6 +49,7 @@ var drinkFetch = function () {
 
     requestURL = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=" + search;
 
+
     var fillCards = function (name, picture, mainIngred, instructions) {
 
       console.log(name);
@@ -56,77 +57,63 @@ var drinkFetch = function () {
       console.log(mainIngred);
       console.log(instructions);
 
-      var drinks = [explosion, smart, scared, investigative, laugh, dramatic, youngLove, yeehaw, thriller, family];
+      var cardDiv1 = document.createElement('div');
+      cardDiv1.className = "card mb-3";
+      cardDiv1.setAttribute('style', 'max-width: 540px');
+
+      var cardDiv2 = document.createElement('div');
+      cardDiv2.className = 'row g-0';
+
+      var cardDiv3 = document.createElement('div');
+      cardDiv3.className = 'col-md-4';
+
+      var cardPicture = document.createElement('img');
+      cardPicture.setAttribute('src', picture);
+      cardPicture.setAttribute('style', 'max-width: 100%');
 
 
-      var search = drinks[j][Math.floor(Math.random() * drinks[j].length)];
+      var cardDiv4 = document.createElement('div');
+      cardDiv4.className = 'col-md-8';
 
-      requestURL = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=" + search;
+      var cardBody = document.createElement('div');
+      cardBody.className = 'card-body';
 
-      var fillCards = function (name, picture, mainIngred, instructions) {
+      var cardName = document.createElement('h5');
+      cardName.className = 'card-title';
+      cardName.textContent = name;
 
-        console.log(name);
-        console.log(picture);
-        console.log(mainIngred);
-        console.log(instructions);
+      var cardinstructions = document.createElement('p');
+      cardinstructions.className = 'card-text';
+      cardinstructions.textContent = instructions;
 
-        var cardDiv1 = document.createElement('div');
-        cardDiv1.className = "card mb-3";
-        cardDiv1.setAttribute('style', 'max-width: 540px');
+      var cardingred = document.createElement('p');
+      cardingred.className = 'card-text';
+      cardingred.textContent = mainIngred;
 
-        var cardDiv2 = document.createElement('div');
-        cardDiv2.className = 'row g-0';
+      cardInfo.appendChild(cardDiv1);
+      cardDiv1.appendChild(cardDiv2);
+      cardDiv2.appendChild(cardDiv3);
+      cardDiv2.appendChild(cardDiv4);
+      cardDiv3.appendChild(cardPicture);
+      cardDiv4.appendChild(cardBody);
+      cardBody.append(cardName, cardinstructions, cardingred);
 
-        var cardDiv3 = document.createElement('div');
-        cardDiv3.className = 'col-md-4';
-
-        var cardPicture = document.createElement('img');
-        cardPicture.setAttribute('src', picture);
-        cardPicture.setAttribute('style', 'max-width: 100%');
-
-
-        var cardDiv4 = document.createElement('div');
-        cardDiv4.className = 'col-md-8';
-
-        var cardBody = document.createElement('div');
-        cardBody.className = 'card-body';
-
-        var cardName = document.createElement('h5');
-        cardName.className = 'card-title';
-        cardName.textContent = name;
-
-        var cardinstructions = document.createElement('p');
-        cardinstructions.className = 'card-text';
-        cardinstructions.textContent = instructions;
-
-        var cardingred = document.createElement('p');
-        cardingred.className = 'card-text';
-        cardingred.textContent = mainIngred;
-
-        cardInfo.appendChild(cardDiv1);
-        cardDiv1.appendChild(cardDiv2);
-        cardDiv2.appendChild(cardDiv3);
-        cardDiv2.appendChild(cardDiv4);
-        cardDiv3.appendChild(cardPicture);
-        cardDiv4.appendChild(cardBody);
-        cardBody.append(cardName, cardinstructions, cardingred);
-
-
-      }
-
-      fetch(requestURL)
-        .then(function (response) {
-          return response.json();
-        })
-        .then(function (data) {
-
-          fillCards(data.drinks[0].strDrink, data.drinks[0].strDrinkThumb, data.drinks[0].strIngredient1, data.drinks[0].strInstructions);
-        })
-        .catch(function (error) {
-          console.log(error);
-        });
 
     }
+
+    fetch(requestURL)
+      .then(function (response) {
+        return response.json();
+      })
+      .then(function (data) {
+
+        fillCards(data.drinks[0].strDrink, data.drinks[0].strDrinkThumb, data.drinks[0].strIngredient1, data.drinks[0].strInstructions);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+
+
   }
 };
 drinkFetch();
