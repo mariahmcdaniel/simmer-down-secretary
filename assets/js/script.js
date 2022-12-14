@@ -34,7 +34,7 @@ var family = ["Mojito", "Margarita", "Aperol Spritz", "Mimosa", "Hot Toddy"];
 var thriller = ["Moscow Mule", "Sazerac", "Boulevardier", "Gimlet", "Mind Eraser"];
 var yeehaw = ["Whiskey Sour", "Polama", "Cement Mixer", "Long Island Iced Tea", "Lynchburg Lemonade", "Mudslide"];
 
-var i = 5
+var i = 5 //young love
 // var search = investigative[1]  
 // ---this is a tester for broken searches
 // scared, investigative all good
@@ -42,54 +42,54 @@ var i = 5
 
 var drinkFetch = function () {
   for (var j = 0; j < 3; j++) {
-
+    
     var drinks = [smart, scared, investigative, laugh, dramatic, youngLove, explosion, family, thriller, yeehaw,];
-
-
+    
+    
     var search = drinks[i][Math.floor(Math.random() * drinks[i].length)];
-
+    
     requestURL = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=" + search;
-
-
-    var fillCards = function (name, picture, mainIngred, instructions) {
-
+    
+    
+    var fillCards = function (name, picture, mainIngred, instructions, mainIngred2, mainIngred3) {
+      
       var cardDiv1 = document.createElement('div');
-      cardDiv1.className = "card mb-3";
+      cardDiv1.className = "card mb-3 bg-light";
       cardDiv1.setAttribute('style', 'max-width: 540px');
-
+      
       var cardDiv2 = document.createElement('div');
       cardDiv2.className = 'row g-0';
-
+      
       var cardDiv3 = document.createElement('div');
       cardDiv3.className = 'col-md-4';
-
+      
       var cardPicture = document.createElement('img');
       cardPicture.setAttribute('src', picture);
-      cardPicture.setAttribute('style', 'max-width: 100%');
-
+      cardPicture.className = 'm-1';
+      cardPicture.setAttribute('style', 'max-width: 90%');
+      
       var cardButton = document.createElement('button');
-      cardButton.className = ('btn');
+      cardButton.className = ('btn bg-success m-1 text-light');
       cardButton.textContent = 'Click to Save';
-
-
+      
       var cardDiv4 = document.createElement('div');
       cardDiv4.className = 'col-md-8';
-
+      
       var cardBody = document.createElement('div');
       cardBody.className = 'card-body';
-
+      
       var cardName = document.createElement('h5');
       cardName.className = 'card-title';
       cardName.textContent = name;
-
+      
       var cardinstructions = document.createElement('p');
       cardinstructions.className = 'card-text';
       cardinstructions.textContent = instructions;
-
+      
       var cardingred = document.createElement('p');
       cardingred.className = 'card-text';
-      cardingred.textContent = mainIngred;
-
+      cardingred.textContent = mainIngred + ', ' + mainIngred2 + ', ' + mainIngred3;
+      
       cardInfo.appendChild(cardDiv1);
       cardDiv1.appendChild(cardDiv2);
       cardDiv2.appendChild(cardDiv3);
@@ -97,23 +97,22 @@ var drinkFetch = function () {
       cardDiv3.append(cardPicture, cardButton);
       cardDiv4.appendChild(cardBody);
       cardBody.append(cardName, cardinstructions, cardingred);
-
-
+      
+      
     }
-
+    
     fetch(requestURL)
-      .then(function (response) {
-        return response.json();
-      })
-      .then(function (data) {
-
-        fillCards(data.drinks[0].strDrink, data.drinks[0].strDrinkThumb, data.drinks[0].strIngredient1, data.drinks[0].strInstructions);
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-
-
+    .then(function (response) {
+      return response.json();
+    })
+    .then(function (data) {
+      
+      fillCards(data.drinks[0].strDrink, data.drinks[0].strDrinkThumb, data.drinks[0].strIngredient1, data.drinks[0].strInstructions, data.drinks[0].strIngredient2, data.drinks[0].strIngredient3);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+    
   }
 };
 drinkFetch();
