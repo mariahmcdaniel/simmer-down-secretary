@@ -2,6 +2,7 @@ var gifBtns = document.querySelectorAll('.gifBtn');
 var container = document.querySelector('.container');
 var movieContainer = document.querySelector(".movieContainer");
 var cardInfo = document.getElementById('drinks');
+var replayBtn = document.querySelector("#replay");
 
 var documentaries = ["The Rescue", "March of the Penguins", "Our Father", "Free Solo", "Fire of Love", "The Band", "Won't You Be My Neighbor", "Woodstock ...the movie", "Icarus", "Puping Iron", "The Cove", "Pele", "Apollo 11", "The Central Park Five", "Leaving Neverland", "Fyre", "Quincy", "The Thin Blue Line", "Zeitgeist The Movie", "Man On Wire", "The Salt of the Earth"];
 var horrorMovies = ["Smile", "Us", "Hereditary", "A Quiet Place", "It", "Get Out", "Scream", "Monster House", "Cabin in the Woods", "Let the Right One In", "Hellraiser", "The Invitation", "The Blair Witch Project", "Backcountry", "Krampus", "It Comes At Night", "The Mist", "Old", "The Ring", "The Thing"];
@@ -205,4 +206,6 @@ fetchGif(westernApiUrl, 7);
 fetchGif(thrillerApiUrl, 8);
 fetchGif(familyApiUrl, 9);
 
-
+replayBtn.addEventListener("click", function() {
+  window.location.href="";
+});
