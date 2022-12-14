@@ -1,13 +1,45 @@
 body {
-    background-color: aliceblue;
+    background-image: linear-gradient(#153261, #32C1B4);
 }
 
 .gifBtn {
-    background-color: aqua;
+    background-color: #BEFEF9;
 }
 
-header {
-    background-color: navy;
+#nav {
+    background-color: #E3E5E6;
     text-align: center;
-    color: beige;
+}
+
+#navText {
+    color: #153261;
+
+}
+
+#asside {
+    background-color: #E3E5E6;
+    color: #22645E;
+    border: 2px solid #153261;
+}
+
+#btnBox {
+    background-color: #32C1B4;
+    border-radius: 10px;
+}
+
+#message {
+    background-color: #32C1B4;
+    border-radius: 40px;
+    margin: 20px;
+}
+
+#message p {
+    color: #E3E5E6;
+    padding: 5px;
+    text-align: center;
+    background-color: #153261;
+    font-size: 14px;
+    border-radius: 25px;
+    margin-top: 14px;
+    font-style: bold;
 }

@@ -11,52 +11,61 @@
 </head>
 
 <body>
-    <header>
-        <h1>Simmer Down Secretary</h1>
-        <p>Choose the gif that matches your mood</p>
-    </header>
+    <nav class="navbar d-flex">
+        <div id="nav" class="container-fluid justify-content-center fs-2 fw-bold text-success">
+            <span id="navText" class="navbar-text text-success">
+                Simmer-Down Secretary
+            </span>
+        </div>
+    </nav>
     <div class="container">
+        <div class="row justify-content-center">
+            <div id="message" class="col-3">
+                <p>Click the gif that best matches your mood!</p>
+            </div>
+        </div>
         <div class="row">
-            <div class="col-12 col-md-9">
-                <div class="row p-5 m-3">
-                    <div class="col p-3 gifBtn" id="documentary">
+            <div id="btnBox" class="col col-sm-12 col-md-9">
+                <div class="row mx-3 pt-2">
+                    <div class="col p-2 gifBtn" id="documentary">
                         <img data-index="0">
                     </div>
-                    <div class="col p-3 gifBtn" id="horror">
+                    <div class="col p-2 gifBtn" id="horror">
                         <img data-index="1">
                     </div>
-                    <div class="col p-3 gifBtn" id="trueCrime">
+                    <div class="col p-2 gifBtn" id="trueCrime">
                         <img data-index="2">
                     </div>
-                    <div class="col p-3 gifBtn" id="comedy">
+                    <div class="col p-2 gifBtn" id="comedy">
                         <img data-index="3">
                     </div>
-                    <div class="col p-3 gifBtn" id="drama">
+                    <div class="col p-2 gifBtn" id="drama">
                         <img data-index="4">
                     </div>
                 </div>
-                <div class="row p-5 m-3">
-                    <div class="col p-3 gifBtn" id="romance">
+                <div class="row mx-3 pb-2">
+                    <div class="col p-2 gifBtn" id="romance">
                         <img data-index="5">
                     </div>
-                    <div class="col p-3 gifBtn" id="action">
+                    <div class="col p-2 gifBtn" id="action">
                         <img data-index="6">
                     </div>
-                    <div class="col p-3 gifBtn" id="feel-good">
+                    <div class="col p-2 gifBtn" id="feel-good">
                         <img data-index="7">
                     </div>
-                    <div class="col p-3 gifBtn" id="thriller">
+                    <div class="col p-2 gifBtn" id="thriller">
                         <img data-index="8">
                     </div>
-                    <div class="col p-3 gifBtn" id="western">
+                    <div class="col p-2 gifBtn" id="western">
                         <img data-index="9">
                     </div>
                 </div>
-                <div class="col-12 col-md-3 bg-dark">
-                    <p>Asside</p>
-                </div>
+            </div>
+            <div id="asside" class="col col-sm-12 col-md-3 text-center rounded">
+                <h2>Previous Reccomendations</h2>
             </div>
         </div>
+    </div>
 </body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 <script src="./assets/js/script.js"></script>
