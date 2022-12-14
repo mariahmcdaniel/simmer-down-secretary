@@ -3,6 +3,7 @@ var container = document.querySelector('.container');
 var movieContainer = document.querySelector(".movieContainer");
 var cardInfo = document.getElementById('drinks');
 var replayBtn = document.querySelector("#replay");
+var movieResult = [];
 
 var documentaries = ["The Rescue", "March of the Penguins", "Our Father", "Free Solo", "Fire of Love", "The Band", "Won't You Be My Neighbor", "Woodstock ...the movie", "Icarus", "Puping Iron", "The Cove", "Pele", "Apollo 11", "The Central Park Five", "Leaving Neverland", "Fyre", "Quincy", "The Thin Blue Line", "Zeitgeist The Movie", "Man On Wire", "The Salt of the Earth"];
 var horrorMovies = ["Smile", "Us", "Hereditary", "A Quiet Place", "It", "Get Out", "Scream", "Monster House", "Cabin in the Woods", "Let the Right One In", "Hellraiser", "The Invitation", "The Blair Witch Project", "Backcountry", "Krampus", "It Comes At Night", "The Mist", "Old", "The Ring", "The Thing"];
@@ -15,16 +16,17 @@ var feelGoodMovies = ["The Parent Trap", "Spirited Away", "Ratatouille", "Hunt f
 var thrillers = ["Gone Girl", "The Invisible Man", "Woman in the Window", "The Butterfly Effect", "Enough", "The Stranger", "Black Swan", "Shutter Island, Parasite", "The Girl on the Train", "Fractured", "Prisoners", "Inception", "Zodiac", "The Invitation", "Nocturnal Animals", "The Gift", "Nightcrawler", "The Machinist", "Mulholland Drive", "The Shining", "Cape Fear"];
 var westerns = ["The Power of the Dog", "Hell or High Water", "Tombstone", "The Hateful Eight", "The Salvation", "Blackthorn", "The Magnificent Seven", "Dead Man", "The Horse Whisperer", "The Keeping Room", "In a Valley of Violence", "Silverado", "The Ballad of Lefty Brown", "Red Hill", "Hostiles", "Appaloosa", "Open Range", "El Topo", "The Long Riders", "Hud", "The Homesman", "How the West Was Won"];
 
-var smart = ["Dark and Stormy", "Negroni", "Old Fashioned", "French 75", "Mint Julep"];
-var scared = ["Bloody Mary", "BoilerMaker", "Corpse Reviver", "Cuba Libra", "Grasshopper"];
-var investigative = ["Sidecar", "Blue Lagoon", "Bellini", "Black & Tan", "Gin Fizz"];
-var laugh = ["Mojito", "rum punch", "Tom Collins", "Daiquiri", "Bahama Mama"];
-var dramatic = ["Dirty Martini", "Alabama Slammer", "Caipirinha", "Clover Club", "Greyhound"];
-var youngLove = ["Cosmo", "Tokyo Tea", "Sex on the Beach", "Mai Tai", "Pina Colada"];
-var explosion = ["Vesper", "Espresso Martini", "Alabama Slammer", "White Russian", "Penicillin", "Kamikaze"];
-var family = ["Mojito", "Margarita", "Aperol Spritz", "Mimosa", "Hot Toddy"];
-var thriller = ["Moscow Mule", "Sazerac", "Boulevardier", "Gimlet", "Mind Eraser"];
-var yeehaw = ["Whiskey Sour", "Polama", "Cement Mixer", "Long Island Iced Tea", "Lynchburg Lemonade", "Mudslide"];
+var smart = ["Dark and Stormy", "Negroni", "Old Fashioned", "French 75", "Mint Julep", "singapore sling"];
+var scared = ["Bloody Mary", "BoilerMaker", "Corpse Reviver", "Cuba Libra", "Grasshopper", "gin rickey"];
+var investigative = ["Sidecar", "Blue Lagoon", "Bellini", "Black & Tan", "Gin Fizz", "brooklyn"];
+var laugh = ["Mojito", "rum punch", "Tom Collins", "Daiquiri", "Bahama Mama", "rum sour", "pisco sour"];
+var dramatic = ["Dirty Martini", "Alabama Slammer", "Caipirinha", "Clover Club", "Greyhound", "godfather"];
+var youngLove = ["Cosmo", "Sex on the Beach", "Mai Tai", "Pina Colada", "between the sheets", "vermouth cassis"];
+var explosion = ["Vesper", "Espresso Martini", "Alabama Slammer", "White Russian", "Penicillin", "Kamikaze", "planters punch"];
+var family = ["Mojito", "Margarita", "Aperol Spritz", "Mimosa", "Hot Toddy", "frozen", "irish coffee"];
+var thriller = ["Moscow Mule", "Sazerac", "Boulevardier", "Gimlet", "snowball", "hurricane", "americano"];
+var yeehaw = ["Whiskey Sour", "Long Island Iced Tea", "Mudslide", "tequila sunrise", "mint julep", "martinez 2", "amaretto sour"];
+
 
 var runResults = function () {
 
@@ -66,6 +68,7 @@ var drinkFetch = function () {
       var cardButton = document.createElement('button');
       cardButton.className = ('btn bg-success m-1 text-light');
       cardButton.textContent = 'Click to Save';
+      cardButton.setAttribute('data-name', name);
       
       var cardDiv4 = document.createElement('div');
       cardDiv4.className = 'col-md-8';
@@ -131,6 +134,7 @@ var movieFetch = function () {
     });
     
     var fillMovieCard = function (data) {
+
       // MOVIE CARD ELEMENT
     var movieCardEl = document.createElement("div");
     movieCardEl.className = "card p-5";
@@ -146,6 +150,7 @@ var movieFetch = function () {
     var movieCardTitle = document.createElement("h5");
     movieCardTitle.className = "card-title";
     movieCardTitle.textContent = data.Title;
+    movieResult.push(data.Title)
     // MOVIE CARD DESCRIPTION
     var movieCardPLot = document.createElement("p");
     movieCardPLot.className = "card-text";
