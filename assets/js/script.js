@@ -108,6 +108,59 @@ var drinkFetch = function () {
 };
 drinkFetch();
 
+var movieFetch = function () {
+  var movies = [documentaries, horrorMovies, trueCrimeMovies, comedies, dramas, romanceMovies, actionMovies, feelGoodMovies, thrillers, westerns];
+
+  var searchMovies = movies[i][Math.floor(Math.random() * movies[i].length)];
+
+  var movieUrl = "http://www.omdbapi.com/?apikey=88ff8839&t=" + searchMovies;
+
+  fetch(movieUrl)
+    .then(function (response) {
+      return response.json();
+    })
+    .then(function (data) {
+      fillMovieCard(data);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+
+  var fillMovieCard = function (data) {
+    // MOVIE CARD ELEMENT
+    var movieCardEl = document.createElement("div");
+    movieCardEl.className = "card p-5";
+    // MOVIE CARD IMG
+    var movieCardImg = document.createElement("img");
+    movieCardImg.className = "card-img-top";
+    movieCardImg.src = data.Poster
+    movieCardImg.setAttribute("style", "max-width: 75%");
+    // MOVIE CARD BODY
+    var movieCardBody = document.createElement("div");
+    movieCardBody.className = "card-body";
+    // MOVIE CARD TITLE
+    var movieCardTitle = document.createElement("h5");
+    movieCardTitle.className = "card-title";
+    movieCardTitle.textContent = data.Title;
+    // MOVIE CARD DESCRIPTION
+    var movieCardPLot = document.createElement("p");
+    movieCardPLot.className = "card-text";
+    movieCardPLot.textContent = data.Plot;
+    // MOVIE CARD RATING
+    var movieCardRating = document.createElement("p");
+    movieCardRating.className = "card-text";
+    movieCardRating.textContent = ("Movie Rating: " + "\uD83C\uDF45 " + data.Ratings[1].Value);
+
+    // APPEND ELEMENT TO PAGE
+    movieContainer.appendChild(movieCardEl);
+    movieCardEl.appendChild(movieCardImg);
+    movieCardEl.appendChild(movieCardBody);
+    movieCardBody.append(movieCardTitle, movieCardPLot, movieCardRating);
+
+  }
+};
+movieFetch();
+
 var documentaryApiUrl = 'https://api.giphy.com/v1/gifs/search?q=research&api_key=FsySzgOBYv5zqlKccJT94Jx4XGUmM90i&rating=pg&limit=20'
 var horrorApiUrl = 'https://api.giphy.com/v1/gifs/search?q=terrifying&api_key=FsySzgOBYv5zqlKccJT94Jx4XGUmM90i&rating=pg&limit=20';
 var crimeApiUrl = 'https://api.giphy.com/v1/gifs/search?q=detective&api_key=FsySzgOBYv5zqlKccJT94Jx4XGUmM90i&rating=pg&limit=20';
@@ -152,54 +205,4 @@ fetchGif(westernApiUrl, 7);
 fetchGif(thrillerApiUrl, 8);
 fetchGif(familyApiUrl, 9);
 
-var movies = [documentaries, horrorMovies, trueCrimeMovies, comedies, dramas, romanceMovies, actionMovies, feelGoodMovies, thrillers, westerns];
-
-
-var searchMovies = movies[i][Math.floor(Math.random() * movies[i].length)];
-
-var movieUrl = "http://www.omdbapi.com/?apikey=88ff8839&t=" + searchMovies;
-
-fetch(movieUrl)
-  .then(function (response) {
-    return response.json();
-  })
-  .then(function (data) {
-    fillMovieCard(data);
-  })
-  .catch(function (error) {
-    console.log(error);
-  });
-
-var fillMovieCard = function (data) {
-  // MOVIE CARD ELEMENT
-  var movieCardEl = document.createElement("div");
-  movieCardEl.className = "card p-5";
-  // MOVIE CARD IMG
-  var movieCardImg = document.createElement("img");
-  movieCardImg.className = "card-img-top";
-  movieCardImg.src = data.Poster
-  movieCardImg.setAttribute("style", "max-width: 75%");
-  // MOVIE CARD BODY
-  var movieCardBody = document.createElement("div");
-  movieCardBody.className = "card-body";
-  // MOVIE CARD TITLE
-  var movieCardTitle = document.createElement("h5");
-  movieCardTitle.className = "card-title";
-  movieCardTitle.textContent = data.Title;
-  // MOVIE CARD DESCRIPTION
-  var movieCardPLot = document.createElement("p");
-  movieCardPLot.className = "card-text";
-  movieCardPLot.textContent = data.Plot;
-  // MOVIE CARD RATING
-  var movieCardRating = document.createElement("p");
-  movieCardRating.className = "card-text";
-  movieCardRating.textContent = ("Movie Rating: " + "\uD83C\uDF45 " + data.Ratings[1].Value);
-
-  // APPEND ELEMENT TO PAGE
-  movieContainer.appendChild(movieCardEl);
-  movieCardEl.appendChild(movieCardImg);
-  movieCardEl.appendChild(movieCardBody);
-  movieCardBody.append(movieCardTitle, movieCardPLot, movieCardRating);
-
-};
 
