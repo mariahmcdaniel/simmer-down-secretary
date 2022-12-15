@@ -18,8 +18,8 @@ body {
 
 }
 
-#asside {
-    background-color: #E3E5E6;
+#aside {
+    background-image: linear-gradient(#E3E5E6, #E3E5E6, #153261);
     color: #22645E;
     border: 2px solid #153261;
 }

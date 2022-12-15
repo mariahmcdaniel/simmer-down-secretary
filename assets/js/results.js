@@ -159,11 +159,11 @@ var movieFetch = function () {
 };
 
 document.addEventListener("click", function (event) {
-    event.preventDefault();
     var element = event.target;
     if (element.matches(".drinkBtn")) {
+        event.preventDefault();
         var pairings = JSON.parse(localStorage.getItem('pairings')) || [];
-        prevPairings.push(movieTitle + '-' + element.dataset.name);
+        pairings.push(movieTitle + '-' + element.dataset.name);
         localStorage.setItem('pairings', JSON.stringify(pairings));
     }
 });
