@@ -28,147 +28,173 @@ var thriller = ["Moscow Mule", "Sazerac", "Boulevardier", "Gimlet", "snowball", 
 var yeehaw = ["Whiskey Sour", "Long Island Iced Tea", "Mudslide", "tequila sunrise", "mint julep", "martinez 2", "amaretto sour"];
 
 
-var runResults = function () {
-
-  var i = localStorage.getItem('data-index');
-  console.log(i);
-  
- 
-
-  
-  
-var drinkFetch = function () {
-  for (var j = 0; j < 3; j++) {
-    
-    var drinks = [smart, scared, investigative, laugh, dramatic, youngLove, explosion, family, thriller, yeehaw,];
-    
-    
-    var search = drinks[i][Math.floor(Math.random() * drinks[i].length)];
-    
-    var requestURL = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=" + search;
-    
-    
-    var fillCards = function (name, picture, mainIngred, instructions, mainIngred2, mainIngred3) {
-      
-      var cardDiv1 = document.createElement('div');
-      cardDiv1.className = "card mb-3 bg-light";
-      cardDiv1.setAttribute('style', 'max-width: 540px');
-      
-      var cardDiv2 = document.createElement('div');
-      cardDiv2.className = 'row g-0';
-      
-      var cardDiv3 = document.createElement('div');
-      cardDiv3.className = 'col-md-4';
-      
-      var cardPicture = document.createElement('img');
-      cardPicture.setAttribute('src', picture);
-      cardPicture.className = 'm-1';
-      cardPicture.setAttribute('style', 'max-width: 90%');
-      
-      var cardButton = document.createElement('button');
-      cardButton.className = ('btn bg-success m-1 text-light');
-      cardButton.textContent = 'Click to Save';
-      cardButton.setAttribute('data-name', name);
-      
-      var cardDiv4 = document.createElement('div');
-      cardDiv4.className = 'col-md-8';
-      
-      var cardBody = document.createElement('div');
-      cardBody.className = 'card-body';
-      
-      var cardName = document.createElement('h5');
-      cardName.className = 'card-title';
-      cardName.textContent = name;
-      
-      var cardinstructions = document.createElement('p');
-      cardinstructions.className = 'card-text';
-      cardinstructions.textContent = instructions;
-      
-      var cardingred = document.createElement('p');
-      cardingred.className = 'card-text';
-      cardingred.textContent = mainIngred + ', ' + mainIngred2 + ', ' + mainIngred3;
-      
-      cardInfo.appendChild(cardDiv1);
-      cardDiv1.appendChild(cardDiv2);
-      cardDiv2.appendChild(cardDiv3);
-      cardDiv2.appendChild(cardDiv4);
-      cardDiv3.append(cardPicture, cardButton);
-      cardDiv4.appendChild(cardBody);
-      cardBody.append(cardName, cardinstructions, cardingred);
-      
-      
+var prevPairings = JSON.parse(localStorage.getItem('pairing'));
+var displayPrevSearch = function () {
+  if (prevPairings !== null) {
+    for (var pair of prevPairings) {
+      prevPair = document.createElement('p');
+      prevPair.textContent = pair;
+      document.getElementById('aside').appendChild(prevPair);
     }
-    
-    fetch(requestURL)
-    .then(function (response) {
-      return response.json();
-    })
-    .then(function (data) {
-      
-      fillCards(data.drinks[0].strDrink, data.drinks[0].strDrinkThumb, data.drinks[0].strIngredient1, data.drinks[0].strInstructions, data.drinks[0].strIngredient2, data.drinks[0].strIngredient3);
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
-    
   }
 };
-drinkFetch();
+displayPrevSearch();
+var runResults = function () {
 
-var movieFetch = function () {
-  var movies = [documentaries, horrorMovies, trueCrimeMovies, comedies, dramas, romanceMovies, actionMovies, feelGoodMovies, thrillers, westerns];
+  var index = localStorage.getItem('data-index');
+  console.log(index);
 
-  var searchMovies = movies[i][Math.floor(Math.random() * movies[i].length)];
 
-  var movieUrl = "http://www.omdbapi.com/?apikey=88ff8839&t=" + searchMovies;
-  
-  fetch(movieUrl)
-    .then(function (response) {
-      return response.json();
-    })
-    .then(function (data) {
-      fillMovieCard(data);
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
-    
+
+
+
+  var drinkFetch = function () {
+    for (var j = 0; j < 3; j++) {
+
+      var drinks = [smart, scared, investigative, laugh, dramatic, youngLove, explosion, family, thriller, yeehaw,];
+
+
+      var search = drinks[index][Math.floor(Math.random() * drinks[index].length)];
+
+      var requestURL = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=" + search;
+
+
+      var fillCards = function (name, picture, mainIngred, instructions, mainIngred2, mainIngred3) {
+
+        var cardDiv1 = document.createElement('div');
+        cardDiv1.className = "card mb-3 bg-light";
+        cardDiv1.setAttribute('style', 'max-width: 540px');
+
+        var cardDiv2 = document.createElement('div');
+        cardDiv2.className = 'row g-0';
+
+        var cardDiv3 = document.createElement('div');
+        cardDiv3.className = 'col-md-4';
+
+        var cardPicture = document.createElement('img');
+        cardPicture.setAttribute('src', picture);
+        cardPicture.className = 'm-1';
+        cardPicture.setAttribute('style', 'max-width: 90%');
+
+        var cardButton = document.createElement('button');
+        cardButton.className = ('btn bg-success m-1 text-light drinkBtn');
+        cardButton.textContent = 'Click to Save';
+        cardButton.setAttribute('data-name', name);
+
+        var cardDiv4 = document.createElement('div');
+        cardDiv4.className = 'col-md-8';
+
+        var cardBody = document.createElement('div');
+        cardBody.className = 'card-body';
+
+        var cardName = document.createElement('h5');
+        cardName.className = 'card-title';
+        cardName.textContent = name;
+
+        var cardinstructions = document.createElement('p');
+        cardinstructions.className = 'card-text';
+        cardinstructions.textContent = instructions;
+
+        var cardingred = document.createElement('p');
+        cardingred.className = 'card-text';
+        cardingred.textContent = mainIngred + ', ' + mainIngred2 + ', ' + mainIngred3;
+
+        cardInfo.appendChild(cardDiv1);
+        cardDiv1.appendChild(cardDiv2);
+        cardDiv2.appendChild(cardDiv3);
+        cardDiv2.appendChild(cardDiv4);
+        cardDiv3.append(cardPicture, cardButton);
+        cardDiv4.appendChild(cardBody);
+        cardBody.append(cardName, cardinstructions, cardingred);
+
+        var drinkBtn = document.querySelectorAll('.drinkBtn');
+        drinkBtn.addEventListener("click", function (event) {
+          event.preventDefault();
+          console.log("hello");
+          var element = event.target;
+          if (element.matches(".drinkBtn")) {
+            if (prevPairings !== null) {
+              prevPairings.push(movieResult[0] + '-' + element.dataset.name);
+              localStorage.setItem('pairing', prevPairings)
+            } else {
+              prevPairings = [movieResult[0] + '-' + element.dataset.name];
+              localStorage.setItem('pairing', prevPairings);
+            }
+          }
+        });
+
+      }
+
+      fetch(requestURL)
+        .then(function (response) {
+          return response.json();
+        })
+        .then(function (data) {
+
+          fillCards(data.drinks[0].strDrink, data.drinks[0].strDrinkThumb, data.drinks[0].strIngredient1, data.drinks[0].strInstructions, data.drinks[0].strIngredient2, data.drinks[0].strIngredient3);
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+
+    }
+  };
+  drinkFetch();
+
+  var movieFetch = function () {
+    var movies = [documentaries, horrorMovies, trueCrimeMovies, comedies, dramas, romanceMovies, actionMovies, feelGoodMovies, thrillers, westerns];
+
+    var searchMovies = movies[index][Math.floor(Math.random() * movies[index].length)];
+
+    var movieUrl = "http://www.omdbapi.com/?apikey=88ff8839&t=" + searchMovies;
+
+    fetch(movieUrl)
+      .then(function (response) {
+        return response.json();
+      })
+      .then(function (data) {
+        fillMovieCard(data);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+
     var fillMovieCard = function (data) {
 
       // MOVIE CARD ELEMENT
-    var movieCardEl = document.createElement("div");
-    movieCardEl.className = "card p-5";
-    // MOVIE CARD IMG
-    var movieCardImg = document.createElement("img");
-    movieCardImg.className = "card-img-top";
-    movieCardImg.src = data.Poster
-    movieCardImg.setAttribute("style", "max-width: 75%");
-    // MOVIE CARD BODY
-    var movieCardBody = document.createElement("div");
-    movieCardBody.className = "card-body";
-    // MOVIE CARD TITLE
-    var movieCardTitle = document.createElement("h5");
-    movieCardTitle.className = "card-title";
-    movieCardTitle.textContent = data.Title;
-    movieResult.push(data.Title)
-    // MOVIE CARD DESCRIPTION
-    var movieCardPLot = document.createElement("p");
-    movieCardPLot.className = "card-text";
-    movieCardPLot.textContent = data.Plot;
-    // MOVIE CARD RATING
-    var movieCardRating = document.createElement("p");
-    movieCardRating.className = "card-text";
-    movieCardRating.textContent = ("Movie Rating: " + "\uD83C\uDF45 " + data.Ratings[1].Value);
+      var movieCardEl = document.createElement("div");
+      movieCardEl.className = "card p-5";
+      // MOVIE CARD IMG
+      var movieCardImg = document.createElement("img");
+      movieCardImg.className = "card-img-top";
+      movieCardImg.src = data.Poster
+      movieCardImg.setAttribute("style", "max-width: 75%");
+      // MOVIE CARD BODY
+      var movieCardBody = document.createElement("div");
+      movieCardBody.className = "card-body";
+      // MOVIE CARD TITLE
+      var movieCardTitle = document.createElement("h5");
+      movieCardTitle.className = "card-title";
+      movieCardTitle.textContent = data.Title;
+      movieResult.push(data.Title)
+      // MOVIE CARD DESCRIPTION
+      var movieCardPLot = document.createElement("p");
+      movieCardPLot.className = "card-text";
+      movieCardPLot.textContent = data.Plot;
+      // MOVIE CARD RATING
+      var movieCardRating = document.createElement("p");
+      movieCardRating.className = "card-text";
+      movieCardRating.textContent = ("Movie Rating: " + "\uD83C\uDF45 " + data.Ratings[1].Value);
 
-    // APPEND ELEMENT TO PAGE
-    movieContainer.appendChild(movieCardEl);
-    movieCardEl.appendChild(movieCardImg);
-    movieCardEl.appendChild(movieCardBody);
-    movieCardBody.append(movieCardTitle, movieCardPLot, movieCardRating);
+      // APPEND ELEMENT TO PAGE
+      movieContainer.appendChild(movieCardEl);
+      movieCardEl.appendChild(movieCardImg);
+      movieCardEl.appendChild(movieCardBody);
+      movieCardBody.append(movieCardTitle, movieCardPLot, movieCardRating);
 
-  }
-};
-movieFetch();
+    }
+  };
+  movieFetch();
 };
 
 var documentaryApiUrl = 'https://api.giphy.com/v1/gifs/search?q=research&api_key=FsySzgOBYv5zqlKccJT94Jx4XGUmM90i&rating=pg&limit=20'
@@ -192,9 +218,9 @@ container.addEventListener('click', function (event) {
     localStorage.setItem('data-index', indexPos);
     window.location = './results.html';
   }
-  
-  
-  
+
+
+
 });
 var gifImgEls = document.querySelectorAll('.gifBtn img');
 var fetchGif = function (requestUrl, btnNum) {
