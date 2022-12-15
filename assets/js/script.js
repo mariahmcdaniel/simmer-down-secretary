@@ -45,9 +45,9 @@ fetchGif(comedyApiUrl, 3);
 fetchGif(dramaApiUrl, 4);
 fetchGif(romanceApiUrl, 5);
 fetchGif(actionApiUrl, 6);
-fetchGif(westernApiUrl, 7);
+fetchGif(familyApiUrl, 7);
 fetchGif(thrillerApiUrl, 8);
-fetchGif(familyApiUrl, 9);
+fetchGif(westernApiUrl, 9);
 
 var prevPairings = JSON.parse(localStorage.getItem('pairings'));
 var displayPrevSearch = function () {
