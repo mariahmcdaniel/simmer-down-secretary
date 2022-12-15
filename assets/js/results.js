@@ -1,7 +1,7 @@
 var movieContainer = document.querySelector(".movieContainer");
 var cardInfo = document.getElementById('drinks');
 var replayBtn = document.querySelector("#replay");
-var movieResult = [];
+var movieTitle = '';
 var documentaries = ["The Rescue", "March of the Penguins", "Our Father", "Free Solo", "Fire of Love", "The Band", "Won't You Be My Neighbor", "Woodstock ...the movie", "Icarus", "Puping Iron", "The Cove", "Pele", "Apollo 11", "The Central Park Five", "Leaving Neverland", "Fyre", "Quincy", "The Thin Blue Line", "Zeitgeist The Movie", "Man On Wire", "The Salt of the Earth"];
 var horrorMovies = ["Smile", "Us", "Hereditary", "A Quiet Place", "It", "Get Out", "Scream", "Monster House", "Cabin in the Woods", "Let the Right One In", "Hellraiser", "The Invitation", "The Blair Witch Project", "Backcountry", "Krampus", "It Comes At Night", "The Mist", "Old", "The Ring", "The Thing"];
 var trueCrimeMovies = ["Zodiac", "The Hillside Strangler", "The Alphabet Killer", "Henry: Portrait of a Serial Killer", "The Secret Life: Jeffrey Dahmer", "To Catch a Killer", "The Deliberate Stranger", "The Hunt for the BTK Killer", "Monster", "The Riverman", "Dear Mr. Gacy", "8213: Gacy House", "10 Rillington Place", "The Capture of the Green River Killer", "The Atlanta Child Murders", "Citizen X", "The Boston Strangler", "Badlands", "In Cold Blood", "Helter Skelter", "Polytechnique"];
@@ -25,8 +25,6 @@ var thriller = ["Moscow Mule", "Sazerac", "Boulevardier", "Gimlet", "snowball", 
 var yeehaw = ["Whiskey Sour", "Long Island Iced Tea", "Mudslide", "tequila sunrise", "mint julep", "martinez 2", "amaretto sour"];
 
 var drinksArr = [smart, scared, investigative, laugh, dramatic, youngLove, explosion, family, thriller, yeehaw,];
-
-
 
 var index = parseInt(localStorage.getItem('data-index'));
 console.log(index);
@@ -90,23 +88,6 @@ var drinkFetch = function () {
             cardDiv3.append(cardPicture, cardButton);
             cardDiv4.appendChild(cardBody);
             cardBody.append(cardName, cardinstructions, cardingred);
-
-            var drinkBtn = document.querySelectorAll('.drinkBtn');
-            drinkBtn.addEventListener("click", function (event) {
-                event.preventDefault();
-                console.log("hello");
-                var element = event.target;
-                if (element.matches(".drinkBtn")) {
-                    if (prevPairings !== null) {
-                        prevPairings.push(movieResult[0] + '-' + element.dataset.name);
-                        localStorage.setItem('pairing', prevPairings)
-                    } else {
-                        prevPairings = [movieResult[0] + '-' + element.dataset.name];
-                        localStorage.setItem('pairing', prevPairings);
-                    }
-                }
-            });
-
         }
 
         fetch(requestURL)
@@ -158,7 +139,6 @@ var movieFetch = function () {
         var movieCardTitle = document.createElement("h5");
         movieCardTitle.className = "card-title";
         movieCardTitle.textContent = data.Title;
-        movieResult.push(data.Title)
         // MOVIE CARD DESCRIPTION
         var movieCardPLot = document.createElement("p");
         movieCardPLot.className = "card-text";
@@ -174,8 +154,19 @@ var movieFetch = function () {
         movieCardEl.appendChild(movieCardBody);
         movieCardBody.append(movieCardTitle, movieCardPLot, movieCardRating);
 
+        movieTitle = data.Title; // SETS MOVIE TITLE
     }
 };
+
+document.addEventListener("click", function (event) {
+    event.preventDefault();
+    var element = event.target;
+    if (element.matches(".drinkBtn")) {
+        var pairings = JSON.parse(localStorage.getItem('pairings')) || [];
+        prevPairings.push(movieTitle + '-' + element.dataset.name);
+        localStorage.setItem('pairings', JSON.stringify(pairings));
+    }
+});
 
 drinkFetch();
 movieFetch();
