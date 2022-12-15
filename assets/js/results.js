@@ -163,7 +163,7 @@ document.addEventListener("click", function (event) {
     var element = event.target;
     if (element.matches(".drinkBtn")) {
         var pairings = JSON.parse(localStorage.getItem('pairings')) || [];
-        prevPairings.push(movieTitle + '-' + element.dataset.name);
+        pairings.push(movieTitle + '-' + element.dataset.name);
         localStorage.setItem('pairings', JSON.stringify(pairings));
     }
 });
