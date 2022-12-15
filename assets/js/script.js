@@ -49,12 +49,12 @@ fetchGif(westernApiUrl, 7);
 fetchGif(thrillerApiUrl, 8);
 fetchGif(familyApiUrl, 9);
 
-var prevPairings = JSON.parse(localStorage.getItem('pairing'));
+var prevPairings = JSON.parse(localStorage.getItem('pairings'));
 var displayPrevSearch = function () {
   if (prevPairings !== null) {
     for (var pair of prevPairings) {
       prevPair = document.createElement('p');
-      prevPair.textContent = pair;
+      prevPair.textContent = 'You watched ' + pair + ' was your drink pairing';
       document.getElementById('aside').appendChild(prevPair);
     }
   }
