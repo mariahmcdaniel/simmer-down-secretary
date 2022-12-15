@@ -11,8 +11,11 @@
 For so many of us, our downtime is limited and precious. We live in a world where this is possible, but there lies the problem in itself; possibilites! What a myriad of options available at our fingertips, movies for every mood. This application aims to take the scroll work out of your hands and present you with a movie choice that matches your current mental state. If you click an emoji that matches your mood, you should be presented with a movie in kind, also drink suggestions with a how-to as a bonus. Enjoy!!
 ​
 # A Glimpse
+
+![Homepage](./assets/images/screenshotofindex.png)
 ​
-![Movie & Drink Pairing](./assets/images/simmer%20down%20secretary.png)
+![Movie & Drink Pairing](./assets/images/pairings.png)
+
 ​
 ## Check it Out
 ​
