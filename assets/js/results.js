@@ -28,14 +28,22 @@ var drinksArr = [smart, scared, investigative, laugh, dramatic, youngLove, explo
 
 var index = parseInt(localStorage.getItem("data-index"));
 
-
-
+//using the Durstenfeld shuffle algorithm
+var shuffleArray = function (array) {
+    for (var i = array.length - 1; i > 0; i--) {
+        var j = Math.floor(Math.random() * (i + 1));
+        var temp = array[i];
+        array[i] = array[j];
+        array[j] = temp;
+    }
+};
 
 
 var drinkFetch = function () {
+    var index = parseInt(localStorage.getItem("data-index"));
+    shuffleArray(drinksArr[index]);
     for (var i = 0; i < 3; i++) {
-        var index = parseInt(localStorage.getItem("data-index"));
-        var search = drinksArr[index][Math.floor(Math.random() * 6)];
+        var search = drinksArr[index][i];
 
         var requestURL = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=" + search;
 
